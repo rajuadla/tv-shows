@@ -80,7 +80,7 @@ export default {
         this.getErrorHandler(error.message)
       }
     },
-    async getSearchData () {
+    getSearchData () {
       this.$router.push({ name: 'Search', query: { q: this.searchText } })
       this.searchText = ''
     }
