@@ -17,13 +17,11 @@ export default {
   showSearchResults (state) {
     const searchedShows = []
 
-    if (state.searchData.data) {
-      for (const data of state.searchData.data) {
-        searchedShows.push(data.show)
-      }
+    for (const data of state.searchData.data) {
+      searchedShows.push(data.show)
     }
 
-    return searchedShows
+    return searchedShows.sort((a, b) => b.rating.average - a.rating.average)
   },
   genreList (state) {
     let finalGenre = []

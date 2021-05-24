@@ -1,6 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
+import HomePage from '@/views/HomePage.vue'
+import ShowSearch from '@/views/ShowSearch.vue'
+import ListShows from '@/views/ListShows.vue'
+import ShowDetails from '@/views/ShowDetails.vue'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -8,36 +13,35 @@ const routes = [
     path: '/home',
     name: 'Home',
     alias: '/',
-    component: () => import(/* webpackChunkName: "HomePage" */ '../views/HomePage.vue')
+    component: HomePage
   },
   {
     path: '/search',
     name: 'Search',
-    component: () => import(/* webpackChunkName: "ShowSearch" */ '../views/ShowSearch.vue'),
-    props: route => ({ searchText: route.query.q })
+    component: ShowSearch,
+    props: true
   },
   {
     path: '/shows/:genre',
     name: 'ListShows',
-    component: () => import(/* webpackChunkName: "ListShows" */ '../views/ListShows.vue'),
+    component: ListShows,
     props: true
   },
   {
     path: '/show/:showid',
     name: 'Show',
-    component: () => import(/* webpackChunkName: "showDetails" */ '../views/ShowDetails.vue'),
+    component: ShowDetails,
     props: true
   },
   {
-    path: '/:pathMatch(.*)*',
+    path: '*',
     redirect: { name: 'Home' }
   }
 ]
 
 const router = new VueRouter({
   routes,
-  scrollBehavior (to, from, savedPosition) {
-    console.log(to, from, savedPosition)
+  scrollBehavior () {
     return { x: 0, y: 0 }
   }
 })

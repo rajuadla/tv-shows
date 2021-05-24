@@ -7,9 +7,6 @@ export default {
       return this.$store.state.errorMessage
     }
   },
-  mount () {
-    this.getErrorHandler('')
-  },
   methods: {
     toggleLoader (val) {
       this.$store.commit('toggleLoader', val)

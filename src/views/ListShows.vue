@@ -29,7 +29,7 @@ export default {
       return this.$store.getters.genreByShows([this.genre])
     },
     isValidGenre () {
-      return this.genreList.find(() => this.genre)
+      return this.genreList.find((item) => String(item).toLowerCase() === String(this.genre).toLowerCase())
     }
   },
   created () {
@@ -41,6 +41,7 @@ export default {
       this.toggleLoader(true)
       try {
         await this.getShowsData()
+        this.getErrorHandler('')
       } catch (error) {
         this.getErrorHandler(error.message)
       }

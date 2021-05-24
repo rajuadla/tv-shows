@@ -12,7 +12,7 @@
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
           <b-nav-item-dropdown text="Genres" right>
-            <b-dropdown-item v-for="(genre, index) in genres" :key="index">
+            <b-dropdown-item class="genre-select" v-for="(genre, index) in genres" :key="index">
               <router-link
                 class="nav-link p-0 text-black-color"
                 :to="{ name: 'ListShows', params: { genre: genre } }"
@@ -68,10 +68,18 @@ export default {
     }
   },
   created () {
-    this.getShowsData()
+    this.getShowData()
   },
   methods: {
     ...mapActions(['getShowsData']),
+    async getShowData () {
+      try {
+        await this.getShowsData()
+        this.getErrorHandler('')
+      } catch (error) {
+        this.getErrorHandler(error.message)
+      }
+    },
     async getSearchData () {
       this.$router.push({ name: 'Search', query: { q: this.searchText } })
       this.searchText = ''

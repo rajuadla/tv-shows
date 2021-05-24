@@ -79,7 +79,8 @@ export default {
   name: 'ShowDetails',
   props: ['showid'],
   created () {
-    this.getShowDetails()
+    this.getShowData()
+    this.getShowCastData()
   },
   computed: {
     ...mapGetters(['showCastData']),
@@ -91,10 +92,25 @@ export default {
   },
   methods: {
     ...mapActions(['getShowDetails', 'getShowCastDetails']),
-    getShowDetails () {
+    async getShowData () {
       this.toggleLoader(true)
-      this.$store.dispatch('getShowDetails', this.showid)
-      this.$store.dispatch('getShowCastDetails', this.showid)
+      try {
+        await this.getShowDetails(this.showid)
+        this.getErrorHandler('')
+      } catch (error) {
+        this.getErrorHandler(error.message)
+      }
+      this.toggleLoader(false)
+    },
+
+    async getShowCastData () {
+      this.toggleLoader(true)
+      try {
+        await this.getShowCastDetails(this.showid)
+        this.getErrorHandler('')
+      } catch (error) {
+        this.getErrorHandler(error.message)
+      }
       this.toggleLoader(false)
     }
   }
@@ -120,6 +136,7 @@ export default {
   background: #CCC;
 }
 .no-image-show-card.card .card-body{
+  width: 221px;
   text-align: center;
   height: 100% !important;
   vertical-align: text-bottom;

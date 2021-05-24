@@ -3,7 +3,7 @@
     <p class="lead">
       Showing results for: <i>{{ searchText }}</i>
     </p>
-    <div class="search-data" v-if="showSearchResults.length">
+    <div class="search-data" v-if="showSearchResults && showSearchResults.length > 0">
       <genre-shows :shows="showSearchResults" ></genre-shows>
     </div>
     <div v-else>
@@ -19,7 +19,6 @@ import GenreShows from '@/components/GenreShows.vue'
 
 export default {
   name: 'ShowSearch',
-  props: ['searchText'],
   components: {
     GenreShows
   },
@@ -27,7 +26,10 @@ export default {
     this.getShowSearchData()
   },
   computed: {
-    ...mapGetters(['showSearchResults'])
+    ...mapGetters(['showSearchResults']),
+    searchText () {
+      return this.$route.query.q
+    }
   },
   watch: {
     $route (to, from) {
@@ -42,6 +44,7 @@ export default {
       this.toggleLoader(true)
       try {
         await this.getShowSearchResults(this.searchText)
+        this.getErrorHandler('')
       } catch (error) {
         this.getErrorHandler(error.message)
       }

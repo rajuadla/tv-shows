@@ -1,5 +1,5 @@
 <template>
-  <div class="genre-shows" v-if="!$store.state.loading">
+  <div class="genre-shows" >
     <h3 class="mb-2 mt-4 genre-heading text-center text-capitalize"
     :class="{ 'text-md-start': !!isHomePage }"  v-if="genre">{{ genre }}</h3>
     <div
@@ -50,8 +50,7 @@ export default {
       } else {
         shows = this.shows
       }
-      const sortedData = shows.sort((a, b) => Number(b.rating.average) - Number(a.rating.average))
-      return sortedData
+      return shows
     }
   },
   methods: {
@@ -67,24 +66,21 @@ export default {
 </script>
 
 <style scoped>
-/* width */
+
 ::-webkit-scrollbar {
   width: 20px;
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
   box-shadow: inset 0 0 5px grey;
   border-radius: 2px;
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
   background: #686464;
   border-radius: 2px
 }
 
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #686464
 }
@@ -95,7 +91,8 @@ export default {
   min-width: 200px;
 }
 .no-image-show-card {
-  max-width: 221px;
+  min-width: 221px;
+  width: 221px;
   height: 100%;
   background: #CCC;
 }

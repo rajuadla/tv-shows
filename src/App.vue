@@ -5,10 +5,10 @@
     </header>
     <main>
       <div class="container">
-        <div class="loader" v-if="$store.state.loading">
+        <div class="loader" v-if="pageLoader">
           <b-spinner variant="danger"></b-spinner>
         </div>
-        <error-handler :message="errorMessage"/>
+        <error-handler :message="errorMessage" v-if="errorMessage"/>
         <router-view v-if="!errorMessage"/>
         <div class="scroll-to-top" v-if="scrollHight > 300">
           <p @click="scrollTop()">^</p>
@@ -72,9 +72,6 @@ body {
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  /*text-align: center;*/
   color: #2c3e50;
   position: relative;
   min-height: 100%;
