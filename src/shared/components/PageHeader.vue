@@ -81,7 +81,9 @@ export default {
       }
     },
     getSearchData () {
-      this.$router.push({ name: 'Search', query: { q: this.searchText } })
+      if (this.searchText) {
+        this.$router.push({ name: 'Search', query: { q: this.searchText } })
+      }
       this.searchText = ''
     }
   }

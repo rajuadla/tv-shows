@@ -87,10 +87,25 @@ describe('PageHeader.vue', () => {
     expect(wrapper.vm.genres).toEqual(ShowsMockData.listGenre)
   })
 
+  it('should navigate to search page when search text is empty', async () => {
+    const routerPushSpy = jest.spyOn(router, 'push')
+    wrapper.setData({ searchText: '' })
+
+    await wrapper.find('b-button-stub').trigger('click')
+    await wrapper.vm.searchText
+
+    wrapper.vm.getSearchData()
+    expect(routerPushSpy).not.toHaveBeenCalled()
+  })
+
   it('should navigate to search page with search text', async () => {
     const routerPushSpy = jest.spyOn(router, 'push')
-    await wrapper.find('b-button-stub').trigger('click')
+    wrapper.setData({ searchText: 'bad' })
 
-    expect(routerPushSpy).toHaveBeenCalledWith({ name: 'Search', query: { q: wrapper.vm.searchText } })
+    await wrapper.find('b-button-stub').trigger('click')
+    await wrapper.vm.searchText
+
+    wrapper.vm.getSearchData()
+    expect(routerPushSpy).toHaveBeenCalled()
   })
 })
