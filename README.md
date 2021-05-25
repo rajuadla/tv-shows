@@ -1,5 +1,16 @@
 # tvshows
 
+## Pre-requisite 
+```
+Install NodeJs from (https://nodejs.org/en/), install the recommended version
+
+Install VSCode best preferable IDE for vue (https://code.visualstudio.com/download)
+
+Good undestanding on javascript and vue concepts (https://vuejs.org/v2/guide/)
+
+Good understanding of jest for testing (https://vue-test-utils.vuejs.org/)
+```
+
 ## Project setup
 ```
 npm install
@@ -71,3 +82,8 @@ install: npm install bootstrap-vue --save
 
 Used for bootstrap widzards 
 Used spinner widzard (b-spinner)
+```
+
+### Build guidelines
+Using camel-case for .js files, varial declaration and methods declaration
+Using pascal-case for .vue component files

@@ -11,7 +11,6 @@ export default new Vuex.Store({
     shows: [],
     showDetails: null,
     searchData: [],
-    genreList: [],
     showCastData: [],
     loading: false,
     errorMessage: null
