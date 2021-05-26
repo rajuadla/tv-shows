@@ -19,7 +19,7 @@ export default {
     })
   },
 
-  async getShowCastDetails ({ commit }, showid) {
+  getShowCastDetails ({ commit }, showid) {
     return showModule.getShowCastDetails(showid).then((res) => {
       commit('getShowCastData', res)
     })
