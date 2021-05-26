@@ -1,6 +1,6 @@
 <template>
   <div class="page-header">
-    <b-navbar toggleable="lg" type="dark" variant="dark">
+    <b-navbar toggleable="lg" type="dark" variant="dark" class="pe-3 ps-3">
       <b-navbar-brand
         ><router-link class="navbar-brand text-uppercase" to="/home"
           >Tv Shows</router-link

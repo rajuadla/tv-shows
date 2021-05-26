@@ -108,7 +108,7 @@ export default {
   position: absolute;
   top: 10px;
   left: 5%;
-  background: #636567;
+  background: #c73838;
   padding: 5px;
   border-radius: 50%;
   font-size: 12px;

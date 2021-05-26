@@ -8,7 +8,7 @@ describe('In Show getters', () => {
     showCastData: { data: ShowsTestData.castData }
   }
 
-  const genreList = ['Drama', 'Action', 'Science-Fiction', 'Horror', 'Romance', 'Crime', 'Thriller']
+  const genreList = ShowsTestData.listGenre
 
   it('should call popularShows', () => {
     const result = getters.popularShows(state)

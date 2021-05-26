@@ -1,43 +1,27 @@
 import showModule from '@/services/show'
 
 export default {
-  async getShowsData ({ commit }) {
-    try {
-      const showData = await showModule.getShowsData()
-      commit('getShows', showData)
-    } catch (err) {
-      const error = new Error(err.message)
-      throw error
-    }
+  getShowsData ({ commit }) {
+    return showModule.getShowsData().then((res) => {
+      commit('getShows', res)
+    })
   },
 
-  async getShowDetails ({ commit }, showid) {
-    try {
-      const showDetails = await showModule.getShowDetails(showid)
-      commit('getShowDetailsById', showDetails)
-    } catch (err) {
-      const error = new Error(err.message)
-      throw error
-    }
+  getShowDetails ({ commit }, showid) {
+    return showModule.getShowDetails(showid).then((res) => {
+      commit('getShowDetailsById', res)
+    })
   },
 
-  async getShowSearchResults ({ commit }, searchText) {
-    try {
-      const showSearchData = await showModule.getShowSearchResults(searchText)
-      commit('getShowSearchData', showSearchData)
-    } catch (err) {
-      const error = new Error(err.message)
-      throw error
-    }
+  getShowSearchResults ({ commit }, searchText) {
+    return showModule.getShowSearchResults(searchText).then((res) => {
+      commit('getShowSearchData', res)
+    })
   },
 
   async getShowCastDetails ({ commit }, showid) {
-    try {
-      const showCastData = await showModule.getShowCastDetails(showid)
-      commit('getShowCastData', showCastData)
-    } catch (err) {
-      const error = new Error(err.message)
-      throw error
-    }
+    return showModule.getShowCastDetails(showid).then((res) => {
+      commit('getShowCastData', res)
+    })
   }
 }

@@ -1,5 +1,13 @@
 # tvshows
 
+## Description
+```
+TV Shows application. It will display genre based show on the with rating. 
+User can use search box on the header to search for his/her desired shows.
+It has a genre based filter in the header, user can filter the shows based on genre
+User can see the show details by clicking on the any show card.
+```
+
 ## Pre-requisite 
 ```
 Install NodeJs from (https://nodejs.org/en/), install the recommended version
@@ -85,5 +93,7 @@ Used spinner widzard (b-spinner)
 ```
 
 ### Build guidelines
+```
 Using camel-case for .js files, varial declaration and methods declaration
 Using pascal-case for .vue component files
+```

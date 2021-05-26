@@ -230,12 +230,12 @@ export default {
   ],
   listGenre: [
     "Drama",
+    "Science-Fiction",
     "Thriller",
-    "Horror",
-    "Romance",
     "Action",
-    "Adventure",
-    "Crime"
+    "Crime",
+    "Horror",
+    "Romance"
   ],
   genreShows: {
     Drama: [{

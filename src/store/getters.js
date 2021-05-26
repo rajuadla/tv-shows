@@ -15,21 +15,14 @@ export default {
     return genreShows
   },
   showSearchResults (state) {
-    const searchedShows = []
-
-    for (const data of state.searchData.data) {
-      searchedShows.push(data.show)
-    }
-
-    return searchedShows.sort((a, b) => b.rating.average - a.rating.average)
+    const searchedShow = state.searchData.data.map((data) => data.show)
+    return searchedShow.sort((a, b) => b.rating.average - a.rating.average)
   },
   genreList (state) {
-    let finalGenre = []
     const genreList = state.shows.map((show) => show.genres)
 
-    for (const genre of genreList) {
-      finalGenre = [...genre, ...finalGenre]
-    }
+    const finalGenre = genreList.reduce((finalList, genre) => [...finalList, ...genre], [])
+
     return [...new Set(finalGenre)]
   }
 }
