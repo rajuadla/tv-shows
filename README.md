@@ -47,6 +47,18 @@ npm run lint
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
+### Vue CLI
+```
+Used vue cli version @vue/cli 4.5.13 installed global
+
+install: npm install @vue/cli -g
+```
+
+### Vue
+```
+Using Vue 2.6.11
+```
+
 ### Route Management
 ```
 vue-router@^3.2.0
